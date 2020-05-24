@@ -4,7 +4,7 @@ import { Input } from 'reactstrap';
 
 export default function YearSelector(props) {
 	const options = [];
-	for (var i = 0; i < 3; i++) {
+	for (var i = 0; i < 4; i++) {
 		const date = moment.utc().startOf('year').add(-i, 'year');
 		options.push({ value: date.format('YYYY'), label: date.get('year') })
 	}

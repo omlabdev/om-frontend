@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Creatable from 'react-select/creatable';
+import { Creatable } from 'react-select';
 
 export default class TagsInput extends Component {
 	onChange = (value) => {

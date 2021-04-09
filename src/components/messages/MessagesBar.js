@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import Icon from '../misc/Icon';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import { dismissMessage } from '../../actions/messages';
 
 class MessagesBar extends Component {
@@ -29,20 +29,20 @@ class MessagesBar extends Component {
 	}
 
 	getMessageToDisplay = (messages) => messages.length > 0 ? messages[0] : null;
-	
+
 	dismiss = () => this.props.dismissMessage();
-	
+
 	render() {
 		const message = this.getMessageToDisplay(this.props.messages);
 		return (
-			<ReactCSSTransitionGroup
+			<CSSTransitionGroup
 			  transitionName="message-bar-animation"
 			  transitionLeave={true}
 			  transitionAppear={true}
 			  transitionAppearTimeout={2500}
 			  transitionEnterTimeout={1700}
 			  transitionLeaveTimeout={1000}>
-				{ message && 
+				{ message &&
 					<Row key='messages-bar' className={`messages-bar text-center ${message.type}`}>
 						<Col xs={12} className='text-bar'>
 							<span className='title'>{message.title}:</span>
@@ -53,7 +53,7 @@ class MessagesBar extends Component {
 						</button>
 					</Row>
 				}
-			</ReactCSSTransitionGroup>
+			</CSSTransitionGroup>
 		)
 	}
 }

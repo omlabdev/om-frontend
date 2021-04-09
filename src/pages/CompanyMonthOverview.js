@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter }  from 'react-router';
 import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import YearSelector from '../components/misc/YearSelector';
@@ -56,19 +55,19 @@ class CompanyMonthOverview extends Component {
 					</Col>
 					<Col lg={3} xs={6} className='offset-lg-1'>
 						<div className='overview-billing-cards'>
-							<BillingOverviewCard 
+							<BillingOverviewCard
 								className='month-income-card'
-								amount={income} 
+								amount={income}
 								title={'<b>Income</b>'} />
 
-							<BillingOverviewCard 
+							<BillingOverviewCard
 								className='month-expenses-card'
-								amount={expenses} 
+								amount={expenses}
 								title={'<b>Expenses</b>'} />
 
-							<BillingOverviewCard 
+							<BillingOverviewCard
 								className={`month-profit-card ${profitClazz}`}
-								amount={profit} 
+								amount={profit}
 								title={'<b>Profit</b>'} />
 						</div>
 					</Col>

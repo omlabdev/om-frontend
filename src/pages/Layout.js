@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
-import { Container, Navbar, NavbarBrand, Nav, NavItem, Dropdown, 
-	DropdownToggle, DropdownMenu, DropdownItem 
+import { Container, Navbar, NavbarBrand, Nav, NavItem, Dropdown,
+	DropdownToggle, DropdownMenu 
 } from 'reactstrap';
 import LinkWithTooltip from '../components/misc/LinkWithTooltip';
 import MessagesBar from '../components/messages/MessagesBar';
@@ -54,27 +54,27 @@ class Layout extends Component {
 	setupShortcuts() {
 		// bind functions only for available urls
 		const links = this.getLinks();
-		this.shortcutFns = Object.keys( links ).reduce( ( o, k ) => Object.assign( o, { [k]: this.shortcutFn( links[k] ) } ), {} ); 
+		this.shortcutFns = Object.keys( links ).reduce( ( o, k ) => Object.assign( o, { [k]: this.shortcutFn( links[k] ) } ), {} );
 		this.shortcutsApply( this.props.bindShortcut );
 	}
 
 	tearDownShortcuts() {
 		this.shortcutsApply( this.props.unbindShortcut );
 	}
-	
+
 	/**
 	 * Given a path, returns a function that when called will redirect
 	 * to the given (closure) path
-	 * 
-	 * @param  {String} to 
-	 * @return {Function}    
+	 *
+	 * @param  {String} to
+	 * @return {Function}
 	 */
 	shortcutFn = to => () => this.props.history.push( to );
 
 	/**
 	 * Calls the given function with the shortcut binding parameters.
 	 * fn should be either bind or unbind.
-	 * 
+	 *
 	 * @param  {Function} fn bindShortcut or unbindShortcut
 	 */
 	shortcutsApply( fn ) {
@@ -91,7 +91,7 @@ class Layout extends Component {
 
 	/**
 	 * Returns an object with the available links for this user
-	 * @return {Object} 
+	 * @return {Object}
 	 */
 	getLinks = () => Object.assign( {
 		dashboard: '/',
@@ -107,7 +107,7 @@ class Layout extends Component {
 	} )
 
 	toggleDropdown = () => this.setState( { overviewOpen: !this.state.overviewOpen } );
-	
+
 	render() {
 		const { pathname } = this.props.location;
 		const { overviewOpen } = this.state;
@@ -128,7 +128,7 @@ class Layout extends Component {
 									<Icon fa-list-ol/>
 								</LinkWithTooltip>
 							</NavItem>
-							{ links.overview_year && links.overview_month && 
+							{ links.overview_year && links.overview_month &&
 								<Dropdown nav direction="right" isOpen={overviewOpen} toggle={this.toggleDropdown}>
 									<DropdownToggle nav>
 										<Icon fa-rocket/>
@@ -143,7 +143,7 @@ class Layout extends Component {
 									</DropdownMenu>
 								</Dropdown>
 							}
-							{ links.billing && 
+							{ links.billing &&
 								<NavItem>
 									<LinkWithTooltip to={links.billing} id="Nav__Billing" tooltip='Billing (B)'>
 										<Icon fa-dollar/>
@@ -165,7 +165,7 @@ class Layout extends Component {
 									<Icon fa-user/>
 								</LinkWithTooltip>
 							</NavItem>
-							{ links.admin && 
+							{ links.admin &&
 								<NavItem>
 									<LinkWithTooltip to={links.admin} id="Nav__Admin" tooltip='Admin (Q)'>
 										<Icon fa-cog/>

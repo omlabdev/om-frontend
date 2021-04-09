@@ -12,31 +12,31 @@ export default class BillingOverviewCards extends Component {
 			<div className='overview-billing-cards year-month'>
 				<Row className='row-eq-height'>
 					<Col xs={6} lg={12}>
-						<BillingOverviewCard 
+						<BillingOverviewCard
 							className='year-objective-card'
-							amount={objective} 
+							amount={objective}
 							title={'<b>Year</b> objective'} />
 					</Col>
 					<Col xs={6} lg={12}>
-						<BillingOverviewCard 
+						<BillingOverviewCard
 							className='year-actual-card'
-							amount={this.getTotalYearBilling( billingInvoices )} 
+							amount={this.getTotalYearBilling( billingInvoices )}
 							title={'<b>Year</b> actual'} />
 					</Col>
 					<Col xs={6} lg={12}>
-						<BillingOverviewCard 
+						<BillingOverviewCard
 							className='monthly-objective-card smaller-title'
-							amount={ Math.round( objective / 12 )} 
+							amount={ Math.round( objective / 12 )}
 							title={'<b>Monthly</b> objective'} />
 					</Col>
 					<Col xs={6} lg={12}>
-						<BillingOverviewCard 
+						<BillingOverviewCard
 							className='monthly-avg-card smaller-title'
-							amount={this.getAvgMonthlyBilling( billingInvoices )} 
+							amount={this.getAvgMonthlyBilling( billingInvoices )}
 							title={'<b>Monthly</b> avg'} />
 					</Col>
 				</Row>
-			</div>				
+			</div>
 		);
 	}
 
@@ -54,7 +54,7 @@ export default class BillingOverviewCards extends Component {
 			realEnd = moment();
 		}
 
-		const monthsOfData = parseInt( realEnd.diff( start, 'months', true ) + 1 );
+		const monthsOfData = parseInt( realEnd.diff( start, 'months', true ) + 1, 10 );
 
 		return Math.round( total / monthsOfData );
 	}

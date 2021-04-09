@@ -9,9 +9,9 @@ export default function UserInfoCard(props) {
 			<CardBody>
 				<Row>
 					<Col xs={12} md={{ size: 4, offset: 1 }}>
-						{ user.profile_image && 
+						{ user.profile_image &&
 							<div className='profile-image-preview'>
-								<img src={user.profile_image}/>
+								<img src={user.profile_image} alt=""/>
 							</div>
 						}
 					</Col>

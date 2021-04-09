@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Creatable } from 'react-select';
+import Creatable from 'react-select/creatable';
 
 export default class TagsInput extends Component {
 	onChange = (value) => {
 		// dispatch generated event to parent component
 		const event = {
-			target : { 
+			target : {
 				name  : this.props.name,
 				value : value.map(o => this.removeExtraText(o.value)) // send back an array of tags
 			}
@@ -14,19 +14,19 @@ export default class TagsInput extends Component {
 	}
 
 	classes = () => (this.props.className || '') + ' form-control no-placeholder tags-input';
-	
+
 	createOnReturn = (keyCode) => keyCode === 13 || keyCode === 32;
 
 	mapValues = (values) => values.map(v => { return {label: v, value: v} })
 
 	removeExtraText = (text) => text.replace("Create option \"", '').replace('"', '').trim()
-	
+
 	render() {
 		const { className, value, ...props } = this.props;
-		
+
 		return (
-			<Creatable clearable={false} className={this.classes()} {...props} 
-				value={this.mapValues(value)} onChange={this.onChange} multi={true} 
+			<Creatable clearable={false} className={this.classes()} {...props}
+				value={this.mapValues(value)} onChange={this.onChange} multi={true}
 				shouldKeyDownEventCreateNewOption={this.createOnReturn} />
 		)
 	}

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';	
-import { 
-	Button, 
-	Modal, 
-	ModalHeader, 
-	ModalBody, 
+import { connect } from 'react-redux';
+import {
+	Button,
+	Modal,
+	ModalHeader,
+	ModalBody,
 	ModalFooter,
 	Form,
 	FormGroup,
@@ -20,13 +20,13 @@ import { and } from '../../../utils';
 class EditProjectModalForm extends Component {
 	constructor( props ) {
 		super( props );
-		this.state = { 
-			project : props.project, 
-			validation: { 
-				name: true, 
-				hours_sold: true, 
+		this.state = {
+			project : props.project,
+			validation: {
+				name: true,
+				hours_sold: true,
 				hourly_rate: true,
-			} 
+			}
 		};
 	}
 
@@ -42,18 +42,18 @@ class EditProjectModalForm extends Component {
 
 		this.props.toggle();
 	}
-	
+
 	onChange = event => {
-		const newState = update( this.state, 
+		const newState = update( this.state,
 			{ project: { [event.target.name]: { $set: event.target.value } } } );
 		this.setState( newState );
 	}
-	
+
 	onChangeCheckbox = event => {
-		this.setState( update( this.state, 
+		this.setState( update( this.state,
 			{ project: { [event.target.name]: { $set: event.target.checked } } } ) );
 	}
-	
+
 	render() {
 		const { project, validation } = this.state;
 		const { edit, toggle } = this.props;
@@ -68,7 +68,7 @@ class EditProjectModalForm extends Component {
 						<FormGroup row>
 							<Label for='name' sm={2}>Name</Label>
 							<Col sm={10} className='align-self-center'>
-								<Input type="text" name="name" id="name" 
+								<Input type="text" name="name" id="name"
 									invalid={!validation.name}
 									onChange={this.onChange}
 									value={project.name} />
@@ -77,7 +77,7 @@ class EditProjectModalForm extends Component {
 						<FormGroup row>
 							<Label for='company_name' sm={2}>Company name</Label>
 							<Col sm={10} className='align-self-center'>
-								<Input type="text" name="company_name" id="company_name" 
+								<Input type="text" name="company_name" id="company_name"
 									onChange={this.onChange}
 									value={project.company_name} />
 							</Col>
@@ -87,7 +87,7 @@ class EditProjectModalForm extends Component {
 						<FormGroup row>
 							<Label for='company_email' sm={2}>Company email</Label>
 							<Col sm={10} className='align-self-center'>
-								<Input type="text" name="company_email" id="company_email" 
+								<Input type="text" name="company_email" id="company_email"
 									onChange={this.onChange}
 									value={project.company_email} />
 							</Col>
@@ -97,13 +97,13 @@ class EditProjectModalForm extends Component {
 						<FormGroup row>
 							<Label for='hours_sold' sm={2}>Hours sold</Label>
 							<Col sm={3} className='align-self-center'>
-								<Input type="number" name="hours_sold" id="hours_sold" 
+								<Input type="number" name="hours_sold" id="hours_sold"
 									invalid={!validation.hours_sold}
 									onChange={this.onChange}
 									value={project.hours_sold} />
 							</Col>
 							<Col sm={3} className='align-self-center'>
-								<Input type="select" name="hours_sold_unit" id="hours_sold_unit" 
+								<Input type="select" name="hours_sold_unit" id="hours_sold_unit"
 									onChange={this.onChange}
 									value={project.hours_sold_unit}>
 									<option value='total'>Total</option>
@@ -114,7 +114,7 @@ class EditProjectModalForm extends Component {
 						<FormGroup row>
 							<Label for="hourly_rate" sm={2}>Hourly rate</Label>
 							<Col sm={10} className='align-self-center'>
-								<Input type="text" name="hourly_rate" id="hourly_rate" 
+								<Input type="text" name="hourly_rate" id="hourly_rate"
 									invalid={!validation.hourly_rate}
 									onChange={this.onChange}
 									value={project.hourly_rate} />
@@ -125,19 +125,19 @@ class EditProjectModalForm extends Component {
 							<Col sm={6}>
 								<FormGroup check>
 									<Label check>
-										<Input type="checkbox" name="featured" id="featured" 
+										<Input type="checkbox" name="featured" id="featured"
 											onChange={this.onChangeCheckbox} checked={project.featured}/>{' '}
 										Feature project
 									</Label>
 								</FormGroup>
 							</Col>
 						</FormGroup>
-						{ project.featured && 
+						{ project.featured &&
 							<div>
 								<FormGroup row>
 									<Label for='description' sm={2}>Description</Label>
 									<Col sm={10} className='align-self-center'>
-										<Input type="textarea" name="description" id="description" 
+										<Input type="textarea" name="description" id="description"
 											onChange={this.onChange}
 											value={project.description} />
 									</Col>
@@ -145,7 +145,7 @@ class EditProjectModalForm extends Component {
 								<FormGroup row>
 									<Label for='description_es' sm={2}>Description (ESP)</Label>
 									<Col sm={10} className='align-self-center'>
-										<Input type="textarea" name="description_es" id="description_es" 
+										<Input type="textarea" name="description_es" id="description_es"
 											onChange={this.onChange}
 											value={project.description_es} />
 									</Col>
@@ -153,7 +153,7 @@ class EditProjectModalForm extends Component {
 								<FormGroup row>
 									<Label for='featured_image' sm={2} className='align-self-center'>Featured image</Label>
 									<Col sm={6} className='align-self-center'>
-										<Input type="text" name="featured_image" id="featured_image" 
+										<Input type="text" name="featured_image" id="featured_image"
 											onChange={this.onChange} value={project.featured_image} />
 									</Col>
 									<Col sm={4} className='align-self-center'>
@@ -165,7 +165,7 @@ class EditProjectModalForm extends Component {
 								<FormGroup row>
 									<Label for='external_link' sm={2}>External Link</Label>
 									<Col sm={10} className='align-self-center'>
-										<Input type="text" name="external_link" id="external_link" 
+										<Input type="text" name="external_link" id="external_link"
 											onChange={this.onChange}
 											value={project.external_link} />
 									</Col>
@@ -173,7 +173,7 @@ class EditProjectModalForm extends Component {
 								<FormGroup row>
 									<Label for="type" sm={2}>Tags</Label>
 									<Col sm={10}>
-										<TagsInput name='tags' value={project.tags} id="tags" 
+										<TagsInput name='tags' value={project.tags} id="tags"
 											onChange={this.onChange} />
 									</Col>
 								</FormGroup>
@@ -193,8 +193,8 @@ class EditProjectModalForm extends Component {
 		const { project } = this.state;
 		const validation = {
 			name : !!project.name,
-			hours_sold : parseInt( project.hourly_rate ) >= 0,
-			hourly_rate : parseInt( project.hourly_rate ) >= 0,
+			hours_sold : parseInt( project.hourly_rate, 10 ) >= 0,
+			hourly_rate : parseInt( project.hourly_rate, 10 ) >= 0,
 		};
 		this.setState( { validation } );
 		return and( Object.values( validation ) );

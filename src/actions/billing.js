@@ -18,7 +18,6 @@ import {
 import superagent from 'superagent';
 import { Endpoints, EndpointAuth, testForErrorReturned } from './endpoints';
 import { addMessage, addError } from './messages';
-import update from 'immutability-helper';
 
 export function invalidateProjectsBilling() {
 	return { type: INVALIDATE_PROJECTS_BILLING };
@@ -38,7 +37,7 @@ function receiveAddInvoice( result ) {
 
 function cleanInvoiceData( invoice ) {
 	let invoiceData = { ...invoice };
-	
+
 	invoiceData.created_by = invoiceData.created_by._id;
 	if ( !invoiceData.project ) {
 		delete invoiceData.project;
@@ -233,7 +232,7 @@ export function sendPaypalInvoice( invoiceId ) {
 			.then( () => dispatch( receiveSendPaypalInvoice() ) )
 			// error handling
 			.catch( error => {
-				dispatch( addError( error.message, 'Send invoice' ) ); 
+				dispatch( addError( error.message, 'Send invoice' ) );
 				dispatch( errorSendPaypalInvoice( error ) );
 			} );
 	};

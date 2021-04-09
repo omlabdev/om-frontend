@@ -5,7 +5,6 @@ import ObjectivesListItem from './ObjectivesListItem';
 import EditObjectiveModalForm from './../forms/EditObjectiveModalForm';
 import Icon from '../../misc/Icon';
 import { getNewObjectiveTemplate } from '../../../utils';
-import moment from 'moment';
 
 export default class ObjectivesList extends Component {
 	constructor() {
@@ -32,12 +31,12 @@ export default class ObjectivesList extends Component {
 					<CardTitle dangerouslySetInnerHTML={{__html: title}} />
 					{ showDateControls && this.renderDateControls() }
 					{ sortedObjectives.empty() && this.renderNoObjectives() }
-					{ !sortedObjectives.empty() && 
+					{ !sortedObjectives.empty() &&
 						<ul className={`objectives-list ${level}`}>
-							{ sortedObjectives.map((o, idx) => 
+							{ sortedObjectives.map((o, idx) =>
 								<ObjectivesListItem key={o._id} objective={o} index={idx} />
 							)}
-						</ul> 
+						</ul>
 					}
 				</CardBody>
 			</Card>
@@ -48,11 +47,11 @@ export default class ObjectivesList extends Component {
 		const { visibleDate, onDateChanged } = this.props;
 		return (
 			<React.Fragment>
-				<button className='date-control day__prev' 
+				<button className='date-control day__prev'
 				  onClick={ e => onDateChanged(visibleDate.clone().add(-1, 'day')) }>
 					<Icon fa-caret-left />
 				</button>
-				<button className='date-control day__next' 
+				<button className='date-control day__next'
 				  onClick={ e => onDateChanged(visibleDate.clone().add(1, 'day')) }>
 					<Icon fa-caret-right />
 				</button>
@@ -83,7 +82,7 @@ export default class ObjectivesList extends Component {
 						</Link>
 					</Col>
 				</Row>
-				<EditObjectiveModalForm show={this.state.createObjModal} 
+				<EditObjectiveModalForm show={this.state.createObjModal}
 					toggle={this.toggleCreateObjectiveModal} objective={getNewObjectiveTemplate(level)} />
 			</div>
 		)
